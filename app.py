@@ -14,7 +14,7 @@ def process_dataframe(df, source, order_column='订单编号'):
     df['来源'] = source
     if source == '明细':
         df[order_column] = df[order_column].apply(
-            lambda x: str(int(float(x))) if pd.notna(x) else None
+            lambda x: str(int(x)) if pd.notna(x) else None
         )
     else:
         df.insert(0, order_column, df['记录摘要'].apply(extract_order_id))
